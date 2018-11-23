@@ -1,8 +1,8 @@
 {
   "name": "generator-kesaran",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "My go-generator",
-  "homepage": "https://github.com/bakaoh/kesaran",
+  "homepage": "https://github.com/bakaoh/generator-kesaran",
   "author": {
     "name": "bakaoh",
     "email": "tatattai@gmail.com",
@@ -48,22 +48,6 @@
     "*.json": [
       "prettier --write",
       "git add"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "plugins": [
-      "prettier"
     ]
   },
   "scripts": {
