@@ -16,7 +16,7 @@ var (
 var RootCmd = &cobra.Command{
 	Use:     "<%= projectName %>",
 	Short:   "<%= projectName %> Service",
-	Version: "0.0.1",
+	Version: "0.0.0",
 }
 
 // SetRevision inject version from git

@@ -1,3 +1,6 @@
+[<%= servicePackage %>]
+grpc_port = 2636
+
 [zpi]
 connect_string = "dev.zalopay.co:443"
 internal_connect_string = "dev.zalopay.co:443"

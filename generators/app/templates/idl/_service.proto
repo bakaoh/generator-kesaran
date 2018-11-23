@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+package <%= servicePackage %>;
+
+service <%= serviceName %> {
+    rpc Echo (google.protobuf.StringValue) returns (google.protobuf.StringValue);
+}

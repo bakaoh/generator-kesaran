@@ -1,1 +1,1 @@
-# <%= projectName %> Service
+# <%= projectName %> service
