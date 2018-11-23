@@ -9,10 +9,9 @@ module.exports = class extends Generator {
     let goSrc = `${process.env.GOPATH}src/`;
     let projectPath = process.env.LOCAL_PATH || this.destinationRoot();
     var index = projectPath.indexOf(goSrc);
-    console.log(goSrc, projectPath, index);
-    return index !== -1
-      ? projectPath.substring(index + goSrc.length)
-      : undefined;
+    return index === -1
+      ? undefined
+      : projectPath.substring(index + goSrc.length);
   }
 
   initializing() {
@@ -88,20 +87,24 @@ module.exports = class extends Generator {
     ];
 
     for (let tpl in tplMap) {
-      this.fs.copyTpl(
-        this.templatePath(tpl),
-        this.destinationPath(`${this.props.projectName}/${tplMap[tpl]}`),
-        tplContext
-      );
+      if (tplMap[tpl]) {
+        this.fs.copyTpl(
+          this.templatePath(tpl),
+          this.destinationPath(`${this.props.projectName}/${tplMap[tpl]}`),
+          tplContext
+        );
+      }
     }
 
     for (let k in keepFolders) {
-      this.fs.copy(
-        this.templatePath('_.gitkeep'),
-        this.destinationPath(
-          `${this.props.projectName}/${keepFolders[k]}/.gitkeep`
-        )
-      );
+      if (keepFolders[k]) {
+        this.fs.copy(
+          this.templatePath('_.gitkeep'),
+          this.destinationPath(
+            `${this.props.projectName}/${keepFolders[k]}/.gitkeep`
+          )
+        );
+      }
     }
   }
 

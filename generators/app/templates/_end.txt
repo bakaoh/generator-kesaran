@@ -2,7 +2,7 @@
 * Your project is now created, follow the instructions below                     *
 **********************************************************************************
 
-1) Go to project folder '<%- chalk.green('cd ' + projectName + ') %>'
+1) Go to project folder '<%- chalk.green('cd ' + projectName) %>'
 2) Generate grpc '<%- chalk.green('make genpb') %>'
 3) Build service '<%- chalk.green('make build') %>'
 4) Run service '<%- chalk.green('./' + projectName + ' help') %>'
