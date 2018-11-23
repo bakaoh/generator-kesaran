@@ -1,0 +1,20 @@
+BIN = <%= projectName %>
+REVISION = $(shell git log | head -n 1 | cut  -f 2 -d ' ')
+
+clean:
+	rm -f $(BIN)
+
+build: clean
+	go build -ldflags "-X main.revision=$(REVISION)"
+
+genpb:
+	protoc -I/usr/local/include -Iidl \
+		-I$$GOPATH/src \
+		-I$$GOPATH/src/github.com/gogo/protobuf/protobuf \
+		-I$$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+		-I$$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway \
+		--gogo_out=plugins=grpc,Mgoogle/protobuf/wrappers.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/empty.proto=github.com/gogo/protobuf/types:grpc-gen/service \
+		idl/service.proto
+
+rsync:
+	rsync -avz <%= projectName %>* root@10.30.83.2:/zserver/go-projects/<%= projectName %>/

@@ -1,0 +1,7 @@
+[zpi]
+connect_string = "dev.zalopay.co:443"
+internal_connect_string = "dev.zalopay.co:443"
+mte_key = "0090445a7fdd532b57bb1bb59f5ef58e"
+kafka_brokers = ["10.30.83.2:9092"]
+redis_oauth = "10.30.83.10:6380"
+scribe_log = "10.30.83.21:8362"
