@@ -72,7 +72,10 @@ module.exports = class extends Generator {
       '_README.md': 'README.md',
       '_config.toml': `${this.props.projectName}.toml`,
       'idl/_service.proto': `idl/${this.props.servicePackage}.proto`,
-      'services/_server.go': `services/${this.props.servicePackage}/server.go`
+      'services/_server.go': `services/${this.props.servicePackage}/server.go`,
+      'test/integration/_test.go': `test/integration/${
+        this.props.servicePackage
+      }_test.go`
     };
     const tplContext = {
       projectName: this.props.projectName,
@@ -80,11 +83,7 @@ module.exports = class extends Generator {
       serviceName: this.props.serviceName,
       projectPath: this.projectPath
     };
-    const keepFolders = [
-      `plugins`,
-      `test`,
-      `grpc-gen/${this.props.servicePackage}`
-    ];
+    const keepFolders = [`plugins`, `grpc-gen/${this.props.servicePackage}`];
 
     for (let tpl in tplMap) {
       if (tplMap[tpl]) {
@@ -118,6 +117,7 @@ module.exports = class extends Generator {
     var content = this.fs.read(filePath);
     var result = ejs.compile(content)({
       projectName: this.props.projectName,
+      servicePackage: this.props.servicePackage,
       chalk: chalk
     });
     this.log(result);

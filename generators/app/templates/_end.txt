@@ -5,6 +5,7 @@
 1) Go to project folder '<%- chalk.green('cd ' + projectName) %>'
 2) Generate grpc '<%- chalk.green('make genpb') %>'
 3) Build service '<%- chalk.green('make build') %>'
-4) Run service '<%- chalk.green('./' + projectName + ' help') %>'
+4) Run service '<%- chalk.green('./' + projectName + ' ' + servicePackage) %>'
+5) Test service '<%- chalk.green('go test -v ./test/...') %>'
 
 **********************************************************************************
